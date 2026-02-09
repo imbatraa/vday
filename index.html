@@ -1,0 +1,305 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>Valentine’s Day Plan</title>
+
+<style>
+/* =====================
+   THEME VARIABLES
+===================== */
+:root{
+  --accent:#d4af37;
+  --accentSoft:rgba(212,175,55,.35);
+  --text:#f6f6f6;
+  --muted:rgba(246,246,246,.75);
+  --card:rgba(10,10,10,.65);
+  --cardStrong:rgba(10,10,10,.82);
+  --overlayA:rgba(0,0,0,.72);
+  --overlayB:rgba(0,0,0,.55);
+  --shadow:0 22px 70px rgba(0,0,0,.55);
+  --radius:22px;
+}
+
+/* Cute & Playful */
+.theme-cute{
+  --accent:#ff7aa2;
+  --accentSoft:rgba(255,122,162,.35);
+}
+
+/* Passionate / Upscale */
+.theme-passion{
+  --accent:#b11226;
+  --accentSoft:rgba(177,18,38,.4);
+}
+
+*{box-sizing:border-box}
+
+/* =====================
+   BACKGROUND IMAGE
+===================== */
+body{
+  margin:0;
+  min-height:100vh;
+  font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Inter,Arial,sans-serif;
+  color:var(--text);
+  background:url("IMG_0094.jpeg") center top no-repeat;
+  background-size:cover;
+  position:relative;
+}
+@media(max-width:768px){
+  body{
+    background-size:contain;
+    background-color:#000;
+  }
+}
+body::before{
+  content:"";
+  position:fixed;
+  inset:0;
+  background:linear-gradient(180deg,var(--overlayA),var(--overlayB));
+  z-index:0;
+}
+.wrap{position:relative;z-index:1;padding:24px}
+
+/* =====================
+   MUSIC
+===================== */
+#musicToggle{
+  position:fixed;
+  bottom:16px;
+  right:16px;
+  z-index:5;
+  padding:10px 14px;
+  border-radius:999px;
+  background:rgba(10,10,10,.6);
+  border:1px solid var(--accentSoft);
+  color:var(--accent);
+  font-weight:900;
+  cursor:pointer;
+}
+
+/* =====================
+   SCREENS
+===================== */
+.screen{display:none}
+.screen.active{display:flex}
+
+.center{
+  min-height:calc(100vh - 48px);
+  display:flex;
+  align-items:center;
+  justify-content:center;
+}
+
+.card{
+  width:min(760px,100%);
+  background:var(--cardStrong);
+  border-radius:var(--radius);
+  padding:28px;
+  box-shadow:var(--shadow);
+  backdrop-filter:blur(10px);
+  text-align:center;
+}
+
+h1,h2{margin:0}
+p{margin:10px 0;color:var(--muted);line-height:1.6}
+
+/* =====================
+   THEME PICKER
+===================== */
+.themeBtns{
+  display:grid;
+  gap:14px;
+  margin-top:20px;
+}
+.themeBtns button{
+  padding:14px;
+  border-radius:999px;
+  border:1px solid var(--accentSoft);
+  background:transparent;
+  color:var(--accent);
+  font-weight:900;
+  cursor:pointer;
+}
+
+/* =====================
+   DETAILS PAGE
+===================== */
+.detailsCard{
+  max-width:920px;
+  margin:0 auto;
+  background:var(--card);
+  border-radius:var(--radius);
+  padding:24px;
+}
+
+.item{
+  display:flex;
+  gap:12px;
+  background:rgba(0,0,0,.25);
+  border-radius:16px;
+  padding:12px;
+  margin-bottom:12px;
+}
+.time{
+  min-width:80px;
+  padding:10px;
+  border-radius:14px;
+  background:var(--accent);
+  color:#101010;
+  font-weight:900;
+  text-align:center;
+}
+.note{
+  margin-top:6px;
+  font-style:italic;
+  color:var(--muted);
+}
+
+.primary{
+  margin-top:18px;
+  padding:14px 18px;
+  border-radius:999px;
+  background:var(--accent);
+  color:#101010;
+  font-weight:900;
+  border:none;
+  cursor:pointer;
+}
+
+/* =====================
+   RSVP SCREEN
+===================== */
+.rsvpText span{
+  display:block;
+  margin-top:10px;
+  font-size:24px;
+  color:var(--accent);
+  font-weight:1000;
+}
+</style>
+</head>
+
+<body>
+
+<audio id="bgMusic" autoplay loop playsinline>
+  <source src="song.mp3" type="audio/mpeg">
+</audio>
+
+<button id="musicToggle">⏸ Pause music</button>
+
+<div class="wrap">
+
+<!-- =====================
+     SCREEN 1: THEME PICK
+===================== -->
+<div id="screen-theme" class="screen active center">
+  <div class="card">
+    <h2>Hi Gaurika!</h2>
+    <p>
+      Valentine’s Day is coming up.<br>
+      To see the schedule for the day, first choose a theme you want the invitation to be in.
+    </p>
+
+    <div class="themeBtns">
+      <button onclick="setTheme('elegant')">Elegant & Romantic</button>
+      <button onclick="setTheme('cute')">Cute & Playful</button>
+      <button onclick="setTheme('passion')">Passionate / Upscale</button>
+    </div>
+  </div>
+</div>
+
+<!-- =====================
+     SCREEN 2: DETAILS
+===================== -->
+<div id="screen-details" class="screen center">
+  <div class="detailsCard">
+    <h1>Our Valentine’s Day Plan</h1>
+    <p>A little schedule for a big feeling.</p>
+
+    <div class="item">
+      <div class="time">4 PM</div>
+      <div>
+        <strong>Comedy Show</strong><br>
+        Meridian Hall<br>
+        <div class="note">Let’s lighten up with some dark humor.</div>
+      </div>
+    </div>
+
+    <div class="item">
+      <div class="time">7 PM</div>
+      <div>
+        <strong>Cocktail Hour</strong><br>
+        Surprise spot<br>
+        <div class="note">Like we did on our third date.</div>
+      </div>
+    </div>
+
+    <div class="item">
+      <div class="time">9 PM</div>
+      <div>
+        <strong>Dinner at Ngogo</strong><br>
+        Queen St W<br>
+        <div class="note">French kiss vs French food 😉</div>
+      </div>
+    </div>
+
+    <p><strong>Dress code:</strong> Comfortable enough that you don’t shiver outside and feel cold inside 😅</p>
+
+    <button class="primary" onclick="goRSVP()">Click here for RSVP 💛</button>
+  </div>
+</div>
+
+<!-- =====================
+     SCREEN 3: RSVP
+===================== -->
+<div id="screen-rsvp" class="screen center">
+  <div class="card">
+    <h2>RSVP Confirmed 💛</h2>
+    <p class="rsvpText">
+      Go and kiss your fiancée and say:
+      <span>“Looking forward to it”</span>
+    </p>
+    <button class="primary" onclick="goBack()">Back</button>
+  </div>
+</div>
+
+</div>
+
+<script>
+const audio=document.getElementById("bgMusic");
+const toggle=document.getElementById("musicToggle");
+
+toggle.onclick=()=>{
+  if(audio.paused){
+    audio.play(); toggle.textContent="⏸ Pause music";
+  }else{
+    audio.pause(); toggle.textContent="▶ Play music";
+  }
+};
+
+function show(id){
+  document.querySelectorAll(".screen").forEach(s=>s.classList.remove("active"));
+  document.getElementById(id).classList.add("active");
+}
+
+function setTheme(t){
+  document.body.classList.remove("theme-cute","theme-passion");
+  if(t==="cute") document.body.classList.add("theme-cute");
+  if(t==="passion") document.body.classList.add("theme-passion");
+  localStorage.setItem("theme",t);
+  show("screen-details");
+}
+
+function goRSVP(){ show("screen-rsvp"); }
+function goBack(){ show("screen-details"); }
+
+/* Restore theme if refreshed */
+const saved=localStorage.getItem("theme");
+if(saved){ setTheme(saved); }
+</script>
+
+</body>
+</html>
