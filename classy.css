@@ -1,0 +1,6 @@
+h1, h2 { color: gold; }
+.btn.classy, .btn.rsvp {
+  background: black;
+  color: gold;
+  border: 2px solid gold;
+}
