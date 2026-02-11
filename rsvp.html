@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>❤️</title>
+<link rel="stylesheet" href="common.css">
+<link id="theme-style" rel="stylesheet">
+</head>
+
+<body class="bg">
+
+<div class="overlay center">
+  <h1>Go and kiss your fiancée 💋</h1>
+  <h2>and say,<br>“Looking forward to it.”</h2>
+
+  <button class="btn rsvp" onclick="history.back()">Back</button>
+</div>
+
+<audio id="music" src="song.mp3" loop></audio>
+<div class="music-btn" onclick="toggleMusic()">⏸️</div>
+
+<script>
+const theme = localStorage.getItem("theme") || "aesthetic";
+document.getElementById("theme-style").href =
+  theme === "classy" ? "classy.css" : "aesthetic.css";
+
+document.getElementById("music").play();
+
+function toggleMusic(){
+  const m=document.getElementById("music");
+  m.paused?m.play():m.pause();
+}
+</script>
+
+</body>
+</html>
