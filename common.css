@@ -1,0 +1,55 @@
+body {
+  margin: 0;
+  font-family: 'Georgia', serif;
+  height: 100vh;
+}
+
+.bg {
+  background: url('IMG_0094.jpeg') center/cover no-repeat fixed;
+}
+
+.overlay {
+  background: rgba(0,0,0,0.55);
+  color: white;
+  padding: 2rem;
+  min-height: 100vh;
+}
+
+.center {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  text-align: center;
+}
+
+.card {
+  max-width: 700px;
+  margin: auto;
+}
+
+.btn-group {
+  display: flex;
+  gap: 1rem;
+  justify-content: center;
+  margin-top: 2rem;
+}
+
+.btn {
+  padding: 1rem 2rem;
+  border-radius: 10px;
+  border: none;
+  font-size: 1.1rem;
+  cursor: pointer;
+}
+
+.music-btn {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  background: gold;
+  padding: 10px;
+  border-radius: 50%;
+  cursor: pointer;
+}
+.event { margin: 1.5rem 0; }
+.dress { margin-top: 2rem; font-size: 0.95rem; }
