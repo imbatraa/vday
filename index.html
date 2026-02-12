@@ -1,59 +1,265 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-<title>Our First Valentine’s</title>
-<link rel="stylesheet" href="common.css">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Our First Valentine’s Together</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600&family=Poppins:wght@300;400;500&display=swap" rel="stylesheet">
+
+<style>
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Poppins', sans-serif;
+    color: #f5e6c8;
+    overflow-x: hidden;
+}
+
+/* Background */
+.background {
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    background: url('IMG_0094.jpeg') center/cover no-repeat;
+    z-index: -2;
+}
+
+.overlay {
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    background: rgba(0,0,0,0.75);
+    z-index: -1;
+}
+
+/* Page Sections */
+.page {
+    display: none;
+    min-height: 100vh;
+    width: 100%;
+    padding: 40px 20px;
+    text-align: center;
+    animation: fadeIn 0.8s ease;
+}
+
+.active {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+/* Typography */
+h1 {
+    font-family: 'Playfair Display', serif;
+    font-size: 3rem;
+    margin-bottom: 20px;
+}
+
+.subtitle {
+    font-size: 1.2rem;
+    margin-bottom: 40px;
+    opacity: 0.9;
+}
+
+/* Buttons */
+button {
+    background: black;
+    border: 2px solid #d4af37;
+    color: #d4af37;
+    padding: 14px 28px;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: 0.3s ease;
+    margin: 10px;
+    border-radius: 4px;
+}
+
+button:hover {
+    background: #d4af37;
+    color: black;
+}
+
+/* Schedule */
+.schedule {
+    max-width: 750px;
+    text-align: left;
+    margin: 20px auto;
+}
+
+.schedule-item {
+    margin-bottom: 22px;
+}
+
+.time {
+    font-weight: bold;
+    color: #d4af37;
+}
+
+/* Music Icon */
+.music-control {
+    position: fixed;
+    top: 18px;
+    right: 20px;
+    font-size: 22px;
+    cursor: pointer;
+    color: #d4af37;
+    transition: 0.3s;
+}
+
+.music-control:hover {
+    transform: scale(1.15);
+}
+
+/* Confetti */
+.confetti {
+    position: fixed;
+    width: 8px;
+    height: 8px;
+    background: gold;
+    top: -10px;
+    animation: fall linear forwards;
+    opacity: 0.8;
+}
+
+@keyframes fall {
+    to {
+        transform: translateY(110vh) rotate(360deg);
+    }
+}
+
+@keyframes fadeIn {
+    from {opacity: 0;}
+    to {opacity: 1;}
+}
+
+/* MOBILE OPTIMIZATION */
+@media (max-width: 768px) {
+    h1 {
+        font-size: 2rem;
+    }
+
+    .subtitle {
+        font-size: 1rem;
+    }
+
+    .schedule {
+        font-size: 0.95rem;
+    }
+
+    button {
+        width: 85%;
+        max-width: 300px;
+    }
+}
+</style>
 </head>
 
-<body class="bg">
+<body>
 
-<div class="overlay center">
+<div class="background"></div>
+<div class="overlay"></div>
 
-<h1>Our first Valentine’s Day together 😍</h1>
-<h2>Select the vibe you’d want to see the invitation in:</h2>
+<div class="music-control" onclick="toggleMusic()">🎵</div>
+<audio id="bgMusic" loop>
+    <source src="song.mp3" type="audio/mpeg">
+</audio>
 
-<div class="btn-group">
-<button class="btn classy" onclick="chooseTheme('classy')">Classy</button>
-<button class="btn aesthetic" onclick="chooseTheme('aesthetic')">Aesthetic</button>
-</div>
+<!-- PAGE 1 -->
+<section id="page1" class="page active">
+    <h1>🖤 Our First Valentine’s Together ✨</h1>
+    <p class="subtitle">Are you excited or are you excited? 😌</p>
+    <button onclick="goToPage(2)">What’s in for the day? 🥂</button>
+</section>
 
-</div>
+<!-- PAGE 2 -->
+<section id="page2" class="page">
+    <h1>✨ The Plan for the Day ✨</h1>
 
-<audio id="bg-music" src="song.mp3" loop></audio>
-<div class="music-btn" onclick="toggleMusic()">🎵</div>
+    <div class="schedule">
+        <div class="schedule-item">
+            <p class="time">🥞 12PM: Brunch @ TBD</p>
+            <p>Or as I say it — “Dekhte hain kahan jayenge?” 😏</p>
+        </div>
+
+        <div class="schedule-item">
+            <p class="time">🎤 4PM: Samay Raina's Comedy Show @ Meridian Hall</p>
+            <p>Let’s light-en up our moods with some dark humour. 😂</p>
+        </div>
+
+        <div class="schedule-item">
+            <p class="time">🍸 7PM: Cocktails @ Home</p>
+            <p>Let’s make each other a cocktail. 🖤</p>
+        </div>
+
+        <div class="schedule-item">
+            <p class="time">🍕🎬 9PM: Dinner & Movie Night @ Home</p>
+            <p>Let’s cook together or order pizza and watch something cozy. 🤍</p>
+        </div>
+
+        <div class="schedule-item">
+            <p class="time">👗 Dress Code:</p>
+            <p>Comfortable enough to keep the cold outside yet making sure we look hot. 🔥</p>
+        </div>
+    </div>
+
+    <button onclick="goToPage(3)">RSVP 💌</button>
+    <button onclick="goToPage(1)">Back ⬅️</button>
+</section>
+
+<!-- PAGE 3 -->
+<section id="page3" class="page">
+    <h1>🎉 Yayyyyy! You RSVP’d YESSSSSS! 💛</h1>
+    <p class="subtitle">As if you had any other choice. 😌</p>
+    <p style="margin-top:30px; max-width:600px;">
+        To confirm your booking, please go kiss your fiancé 💋  
+        and say <strong>“Looking forward to it.”</strong>
+    </p>
+</section>
 
 <script>
-function chooseTheme(theme){
-  localStorage.setItem("theme", theme);
-  window.location.href="schedule.html";
+const music = document.getElementById("bgMusic");
+let musicStarted = false;
+
+function goToPage(pageNumber) {
+    document.querySelectorAll(".page").forEach(p => p.classList.remove("active"));
+    document.getElementById("page" + pageNumber).classList.add("active");
+
+    if (!musicStarted) {
+        music.play();
+        musicStarted = true;
+    }
+
+    if(pageNumber === 3){
+        createConfetti();
+    }
+
+    window.scrollTo(0,0);
 }
 
-document.body.addEventListener("click", ()=>{
-  const music=document.getElementById("bg-music");
-  if(music.paused){
-    music.play();
-    sessionStorage.setItem("musicPlaying","true");
-  }
-},{once:true});
-
-window.onload=function(){
-  const music=document.getElementById("bg-music");
-  if(sessionStorage.getItem("musicPlaying")==="true"){
-    music.play();
-  }
+function toggleMusic() {
+    if (music.paused) {
+        music.play();
+    } else {
+        music.pause();
+    }
 }
 
-function toggleMusic(){
-  const music=document.getElementById("bg-music");
-  if(music.paused){
-    music.play();
-    sessionStorage.setItem("musicPlaying","true");
-  }else{
-    music.pause();
-    sessionStorage.setItem("musicPlaying","false");
-  }
+function createConfetti() {
+    for(let i = 0; i < 40; i++){
+        let confetti = document.createElement("div");
+        confetti.classList.add("confetti");
+        confetti.style.left = Math.random() * 100 + "vw";
+        confetti.style.animationDuration = (Math.random() * 3 + 2) + "s";
+        document.body.appendChild(confetti);
+
+        setTimeout(() => confetti.remove(), 4000);
+    }
 }
 </script>
 
