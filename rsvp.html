@@ -11,25 +11,38 @@
 <body class="bg">
 
 <div class="overlay center">
-  <h1>Go and kiss your fiancée 💋</h1>
-  <h2>and say,<br>“Looking forward to it.”</h2>
 
-  <button class="btn rsvp" onclick="history.back()">Back</button>
+<h1>Go and kiss your fiancée 💋</h1>
+<h2>and say,<br>“Looking forward to it.”</h2>
+
+<button class="btn back" onclick="history.back()">Back</button>
+
 </div>
 
-<audio id="music" src="song.mp3" loop></audio>
-<div class="music-btn" onclick="toggleMusic()">⏸️</div>
+<audio id="bg-music" src="song.mp3" loop></audio>
+<div class="music-btn" onclick="toggleMusic()">🎵</div>
 
 <script>
-const theme = localStorage.getItem("theme") || "aesthetic";
-document.getElementById("theme-style").href =
-  theme === "classy" ? "classy.css" : "aesthetic.css";
+const theme=localStorage.getItem("theme")||"aesthetic";
+document.getElementById("theme-style").href=
+  theme==="classy"?"classy.css":"aesthetic.css";
 
-document.getElementById("music").play();
+window.onload=function(){
+  const music=document.getElementById("bg-music");
+  if(sessionStorage.getItem("musicPlaying")==="true"){
+    music.play();
+  }
+}
 
 function toggleMusic(){
-  const m=document.getElementById("music");
-  m.paused?m.play():m.pause();
+  const music=document.getElementById("bg-music");
+  if(music.paused){
+    music.play();
+    sessionStorage.setItem("musicPlaying","true");
+  }else{
+    music.pause();
+    sessionStorage.setItem("musicPlaying","false");
+  }
 }
 </script>
 
