@@ -1,39 +1,59 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Our First Valentine’s</title>
-  <link rel="stylesheet" href="common.css">
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Our First Valentine’s</title>
+<link rel="stylesheet" href="common.css">
 </head>
+
 <body class="bg">
 
 <div class="overlay center">
-  <h1>Our first Valentine’s Day together</h1>
-  <h2>Select the vibe you’d want to see the invitation in</h2>
 
-  <div class="btn-group">
-    <button class="btn classy" onclick="choose('classy')">Classy</button>
-    <button class="btn aesthetic" onclick="choose('aesthetic')">Aesthetic</button>
-  </div>
+<h1>Our first Valentine’s Day together 😍</h1>
+<h2>Select the vibe you’d want to see the invitation in:</h2>
+
+<div class="btn-group">
+<button class="btn classy" onclick="chooseTheme('classy')">Classy</button>
+<button class="btn aesthetic" onclick="chooseTheme('aesthetic')">Aesthetic</button>
 </div>
 
-<audio id="music" src="song.mp3" loop></audio>
-<div class="music-btn" onclick="toggleMusic()">⏸️</div>
+</div>
+
+<audio id="bg-music" src="song.mp3" loop></audio>
+<div class="music-btn" onclick="toggleMusic()">🎵</div>
 
 <script>
-function choose(style){
-  localStorage.setItem("theme", style);
-  window.location.href = "schedule.html";
+function chooseTheme(theme){
+  localStorage.setItem("theme", theme);
+  window.location.href="schedule.html";
 }
 
 document.body.addEventListener("click", ()=>{
-  document.getElementById("music").play();
+  const music=document.getElementById("bg-music");
+  if(music.paused){
+    music.play();
+    sessionStorage.setItem("musicPlaying","true");
+  }
 },{once:true});
 
+window.onload=function(){
+  const music=document.getElementById("bg-music");
+  if(sessionStorage.getItem("musicPlaying")==="true"){
+    music.play();
+  }
+}
+
 function toggleMusic(){
-  const m = document.getElementById("music");
-  m.paused ? m.play() : m.pause();
+  const music=document.getElementById("bg-music");
+  if(music.paused){
+    music.play();
+    sessionStorage.setItem("musicPlaying","true");
+  }else{
+    music.pause();
+    sessionStorage.setItem("musicPlaying","false");
+  }
 }
 </script>
 
