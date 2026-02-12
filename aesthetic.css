@@ -1,8 +1,33 @@
-.overlay{background:rgba(255,255,255,0.85);color:#333;}
-h1,h2{color:#333;}
-.schedule-card{
-background:white;
-border:1px solid #ccc;
-color:#333;
+/* AESTHETIC THEME */
+
+.overlay {
+  background: rgba(255, 255, 255, 0.85);
+  color: #333;
 }
-.btn{background:#eee;color:#333;border:1px solid #aaa;}
+
+h1, h2 {
+  color: #333;
+}
+
+.schedule-card {
+  background: white;
+  border: 1px solid #ccc;
+  color: #333;
+}
+
+.dress-code {
+  background: white;
+  border: 1px solid #ccc;
+  color: #333;
+}
+
+.btn {
+  background: #eee;
+  color: #333;
+  border: 1px solid #aaa;
+}
+
+.btn:hover {
+  background: #333;
+  color: white;
+}
