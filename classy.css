@@ -1,6 +1,4 @@
-h1, h2 { color: gold; }
-.btn.classy, .btn.rsvp {
-  background: black;
-  color: gold;
-  border: 2px solid gold;
-}
+.overlay{background:rgba(0,0,0,0.75);}
+h1,h2{color:gold;}
+.schedule-card{border-color:gold;color:white;}
+.btn{background:black;color:gold;border:2px solid gold;}
